@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, cmake }:
+{ lib, stdenv, fetchFromGitHub, cmake }:
 
 stdenv.mkDerivation rec {
   pname = "asar";
@@ -15,4 +15,10 @@ stdenv.mkDerivation rec {
     mkdir -p $out/bin
     cp asar/asar-standalone $out/bin/asar
   '';
+  meta = with lib; {
+    description = "SNES assembler";
+    homepage = "https://github.com/RPGHacker/asar";
+    license = [ licenses.gpl3Plus ]; 
+    platforms = platforms.linux;
+  };
 }
